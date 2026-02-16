@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Construction Planner PRO</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>🏗 AI Construction Planner</h1>
+<p class="subtitle">Autonomous Multi-Agent Construction Intelligence</p>
+
+<div class="top-bar">
+  <button onclick="toggleTheme()">🌗 Toggle Theme</button>
+  <button onclick="exportPDF()">📄 Export PDF</button>
+</div>
+
+<div class="input-box">
+  <input id="goal" placeholder="Enter goal (Build House)">
+  <button onclick="startVoice()">🎤</button>
+  <button onclick="runPlanner()">Generate Plan</button>
+</div>
+
+<div class="progress"><div id="progressBar"></div></div>
+
+<div class="thinking" id="thinking">🤖 AI is thinking...</div>
+
+<div class="grid">
+
+<div class="card"><h3>📥 Goal</h3><p id="goalOut"></p></div>
+
+<div class="card"><h3>📋 Final Schedule</h3><ul id="schedule"></ul></div>
+
+<div class="card risk-card">
+<h3>⚠ Risk Analysis</h3>
+<p id="risk"></p>
+<div id="severity" class="severity"></div>
+</div>
+
+</div>
+
+<div class="card">
+<h3>📊 Gantt Chart</h3>
+<img id="gantt" style="width:100%; border-radius:10px;">
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

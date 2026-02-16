@@ -1,0 +1,10 @@
+flask
+crewai
+openai
+langchain
+networkx
+matplotlib
+python-dotenv
+pandas
+flask-cors
+groq

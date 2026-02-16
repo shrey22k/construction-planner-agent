@@ -1,0 +1,86 @@
+body {
+  margin:0;
+  font-family:Segoe UI;
+  background:#0f172a;
+  color:white;
+  transition:0.3s;
+}
+
+body.light {
+  background:#f4f6f9;
+  color:#111;
+}
+
+.container {
+  max-width:1000px;
+  margin:40px auto;
+  text-align:center;
+}
+
+.subtitle {
+  color:#94a3b8;
+}
+
+.top-bar button {
+  margin:5px;
+  padding:10px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.input-box input {
+  padding:12px;
+  width:60%;
+  border-radius:6px;
+  border:none;
+}
+
+button {
+  padding:12px;
+  background:#3b82f6;
+  border:none;
+  color:white;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:15px;
+  margin-top:20px;
+}
+
+.card {
+  background:rgba(255,255,255,0.05);
+  padding:18px;
+  border-radius:10px;
+  backdrop-filter:blur(6px);
+}
+
+.risk-card { border-left:4px solid #facc15; }
+
+.severity.Low { color:#22c55e; }
+.severity.Medium { color:#facc15; }
+.severity.High { color:#ef4444; }
+
+.progress {
+  height:6px;
+  background:#1e293b;
+  margin-top:15px;
+  border-radius:4px;
+}
+
+#progressBar {
+  height:100%;
+  width:0%;
+  background:#3b82f6;
+  transition:width 0.4s;
+}
+
+.thinking {
+  display:none;
+  margin-top:10px;
+  font-style:italic;
+}
