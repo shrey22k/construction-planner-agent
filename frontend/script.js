@@ -22,7 +22,16 @@ async function runPlanner() {
   document.getElementById("schedule").innerHTML =
     data.optimized_schedule.map((t,i)=>`<li>Step ${i+1}: ${t}</li>`).join("");
 
-  document.getElementById("risk").textContent = data.risk;
+  // format risk description into bullet list
+  const riskElem = document.getElementById("risk");
+  if (data.risk) {
+    const parts = data.risk.split('•').map(p => p.trim()).filter(p=>p);
+    riskElem.innerHTML = parts.length > 1
+      ? '<ul>' + parts.map(p=>`<li>${p}</li>`).join('') + '</ul>'
+      : data.risk;
+  } else {
+    riskElem.textContent = '';
+  }
 
   const sev = document.getElementById("severity");
   sev.textContent = "Severity: " + data.severity;
@@ -30,6 +39,10 @@ async function runPlanner() {
 
   document.getElementById("gantt").src =
     "http://127.0.0.1:5000/gantt.png?"+Date.now();
+
+  // once results are in, stack risk and gantt vertically to accommodate long text
+  const row = document.querySelector('.flex-row');
+  if (row) row.classList.add('stacked');
 }
 
 function animateProgress() {
@@ -40,7 +53,21 @@ function animateProgress() {
 }
 
 function toggleTheme() {
-  document.body.classList.toggle("light");
+  const btn = document.getElementById("themeBtn");
+  const isDark = document.body.classList.toggle("dark");
+  btn.textContent = isDark
+    ? "🌗 Dark Mode: On"
+    : "🌗 Dark Mode: Off";
+}
+
+// voice recognition function left for potential future use
+function startVoice() {
+  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+  recognition.lang = "en-US";
+  recognition.start();
+  recognition.onresult = e => {
+    document.getElementById("goal").value = e.results[0][0].transcript;
+  };
 }
 
 function exportPDF() {
